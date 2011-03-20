@@ -115,3 +115,31 @@
 		<td></td>
 	</tr>
 </table>
+
+<table width="400px">
+	<tr>
+		<td></td>
+		<td align="center">t2</td>
+		<td></td>
+		<td align="center">t4</td>
+		<td></td>
+		<td align="center">t6</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td align="center">t1</td>
+		<td align="center">|</td>
+		<td align="center">t3</td>
+		<td align="center">|</td>
+		<td align="center">t5</td>
+		<td align="center">|</td>
+		<td>t7</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="right">inserted</td>
+		<td colspan="2" align="right">modified</td>
+		<td colspan="2" align="right">deleted</td>
+		<td></td>
+	</tr>
+</table>
+
