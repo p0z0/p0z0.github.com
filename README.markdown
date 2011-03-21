@@ -136,9 +136,12 @@
 		<td>t7</td>
 	</tr>
 	<tr>
-		<td colspan="2" align="right">inserted</td>
-		<td colspan="2" align="right">modified</td>
-		<td colspan="2" align="right">deleted</td>
+		<td></td>
+		<td align="center">inserted</td>
+		<td></td>
+		<td align="center">modified</td>
+		<td></td>
+		<td align="center">deleted</td>
 		<td></td>
 	</tr>
 </table>
