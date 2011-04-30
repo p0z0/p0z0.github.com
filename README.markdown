@@ -150,10 +150,10 @@
 asd
 
 
-Kisalföld Volán helyi menetrendjeit (Győr, Sopron, Mosonmagyaróvár) magában foglaló alkalmazás Androidra
+Kisalföld Volán helyi menetrendjeit (Győr, Sopron, Mosonmagyaróvár) magában foglaló offline alkalmazás Androidra
 
 ##Célok
-A `BpMenetrend` hez hasonló működés és felület kialakítása, ezek közül is az előző az elsőszámú
+A `BpMenetrend` hez hasonló működés és felület kialakítása, ezek közül is az előző az elsőszámú. Jelenleg `0.1` a verzió, később lesz egy `beta` marketen kívül, illetve `1.0` lenne a market verzió.
 
 ##Felépítés
 Jelenleg az alkalmazás négy csomagból áll
@@ -191,7 +191,11 @@ Az alkalmazás forrásként XML fájlokat használ amik a kvrt.hu oldalról szá
 A `ListofFavoritesActivity` az alkalmazáshoz használt adatbázisból kiolvassa a rekordokat. Az `Activity` oszályok `Intent` segítségével kommonikálnak, amiknek a paraméterei a `Constants` osztályban vannak. A beállítás  `SharedPreferences` segítségével van megvalósítva ami egy XML-ben tárolja az aktuális város nevét.
 
 ##Jelenlegi állapot
- - 0.1 -Működés szempontjából a járat részleteit megjelenítő képernyő még nincs kész
+ - 0.1 - Az activityk közti kapcsolati logika és pár funkcionalitás megvalósítva
 
-
-## Fejlesztési célok
+## TODO
+ - A járat részletes adatait megjelenítő képernyő logikájának kidolgozása
+ - Az lista utolsó elemének duplázásának eltávolítása
+ - Kedvencek Activityn az első hozzáadáskor a járat középre ugrik
+ - Megállók szerint kedvencekhez adás (Megállók activity ?)
+ - UI
