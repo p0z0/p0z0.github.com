@@ -1,6 +1,4 @@
-﻿
-##Mi ez?
-A Kisalföld Volán helyi menetrendjeit (Győr, Sopron, Mosonmagyaróvár) magában foglaló alkalmazás Androidra
+﻿Kisalföld Volán helyi menetrendjeit (Győr, Sopron, Mosonmagyaróvár) magában foglaló alkalmazás Androidra
 
 ##Célok
 A `BpMenetrend` hez hasonló működés és felület kialakítása, ezek közül is az előző az elsőszámú
