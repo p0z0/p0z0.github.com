@@ -1,4 +1,5 @@
-﻿##Mi ez?
+﻿
+##Mi ez?
 A Kisalföld Volán helyi menetrendjeit (Győr, Sopron, Mosonmagyaróvár) magában foglaló alkalmazás Androidra
 
 ##Célok
