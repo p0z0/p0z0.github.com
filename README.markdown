@@ -1,16 +1,16 @@
-﻿JSON RPC Client/Server library for PHP
+﻿JSON-RPC 2.0 Client/Server library for PHP
 
 ###Requirements
 PHP 5.2.6+
 
-###Operation in nutshell
+###Used predefined classes/interfaces
 
-####Client
+###How do I use the client?
+##Operation in nutshell
 
-####Server
-
-###com.github.pozo.volan.items
-XML olvasás közben használt osztályok
+tutorial in wiki
+###How do I use the client?
+##Operation in nutshell
 
 ###com.github.pozo.volan.utils
 Segéd osztályok
