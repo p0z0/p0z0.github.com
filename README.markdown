@@ -1,11 +1,9 @@
-##Introduction
 ﻿JSON-RPC 2.0 Client/Server library for PHP
-
+##Introduction
 ###Requirements
 PHP 5.2.6+
 
 ###Used predefined classes/interfaces
-
  - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
  - `DbConnector` - Adatbázis kapcsolat
  - `LineHandler` - XXML
@@ -23,6 +21,7 @@ PHP 5.2.6+
  - `SpecifiedLineHandler` - XML
 
 tutorial in wiki
+
 ##How do I use the server?
 ###Operation in nutshell
  - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
