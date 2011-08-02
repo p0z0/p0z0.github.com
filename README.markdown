@@ -4,9 +4,12 @@
 PHP 5.2.6+
 
 ###Used predefined classes and interfaces
- - `Countable` @ `lib/utils/ObjectList` 
- - `Iterator` @ `lib/utils/ObjectList`
- - `Exception` @ `lib/server/JsonRpcExceptions`
+ - [ReflectionClass](http://www.php.net/manual/en/class.reflectionclass.php) @ `lib/server/Service`
+ - [ReflectionMethod](http://www.php.net/manual/en/class.reflectionmethod.php) @ `lib/server/Service`
+ - [Exception](http://www.php.net/manual/en/class.exception.php) @ `lib/server/JsonRpcExceptions`
+
+ - [Countable](http://www.php.net/manual/en/class.countable.php) @ `lib/utils/ObjectList` 
+ - [Iterator](http://www.php.net/manual/en/class.iterator.php) @ `lib/utils/ObjectList`
 
 ##How do I use the client?
 After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ 'lib/client/' which help us to sending a well formatted request.
