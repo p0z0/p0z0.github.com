@@ -12,6 +12,10 @@ PHP 5.2.6+
  - `SpecifiedLineHandler` - XML
 
 ##How do I use the client?
+
+    $client = new JsonRpcClient('http://serverurl';
+    $client->add(1,2);
+
 ###Operation in nutshell
  - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
  - `DbConnector` - Adatbázis kapcsolat
