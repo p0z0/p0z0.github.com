@@ -9,10 +9,32 @@ PHP 5.2.6+
  - `Exception` - `lib/server/JsonRpcExceptions`
 
 ##How do I use the client?
-After you instantiate the client class, there have hree option to send a single request, even if that is a notification or a basic request.
+After you instantiate the `JsonRpcClient` with server url, there have two option to send a request. 
+###Single request
+To trigger a single request you have two way:
+Use PHP `__call()` magic method,
 
     $client = new JsonRpcClient('http://serverurl';
+    // you interested in returning value, so it can not be a notification
     $client->add(1,2);
+
+or using `JsonRpcClient` `call()` method.
+
+    $client = new JsonRpcClient('http://serverurl';
+    // you interested in returning value
+    $client->call(new RpcRequest('add',array()));
+
+    // sent a notification, server response nothing
+    $client->call(new RpcRequest('update',array('one',10),true));
+    
+    //every member have setter except id
+    $request = new RpcRequest('add');
+    $request->setParams(array(1,2.8));
+    $client->call($request);
+
+Both method returning an object if the request is not a notification. The object contain `id`,`jsonrpc` and `result` field if the process was successful, otherwise`error` insted of `result`. The `error` object has three members, `message`,`code` and `data` is optional.
+
+###Batch request
 
 ###Operation in nutshell
  - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
