@@ -165,8 +165,16 @@ Az alkalmazás `Activity` osztályait tartalmazza,
  - `ListofFavoritesActivity` - kezdő képernyő, a kedvencnek jelölt járatokat tartalmazza
  - `ListofLinesActivity` - a választott város összes járatát megjeleníti egy `ListView` ban
 
-###com.github.pozo.volan.adapters
-Listák adapter osztályait tartalmazza
+JSON RPC Client/Server library for PHP
+
+###Requirements
+PHP 5.2.6+
+
+###Operation in nutshell
+
+##Client
+
+##Server
 
 ###com.github.pozo.volan.items
 XML olvasás közben használt osztályok
