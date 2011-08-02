@@ -4,14 +4,12 @@
 PHP 5.2.6+
 
 ###Used predefined classes/interfaces
- - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
- - `DbConnector` - Adatbázis kapcsolat
- - `LineHandler` - XXML
- - `Logger` - "kisalfoldvolan" taggel logol a LongCat-be
- - `SharedDialogs` - `Activity` k által használt azonos `Dialog` elemek
- - `SpecifiedLineHandler` - XML
+ - `Countable` - `lib/utils/ObjectList` 
+ - `Iterator` - `lib/utils/ObjectList`
+ - `Exception` - `lib/server/JsonRpcExceptions`
 
 ##How do I use the client?
+After you instantiate the client class, there have hree option to send a single request, even if that is a notification or a basic request.
 
     $client = new JsonRpcClient('http://serverurl';
     $client->add(1,2);
