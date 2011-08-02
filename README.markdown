@@ -6,11 +6,11 @@ PHP 5.2.6+
 ###Used predefined classes/interfaces
 
 ###How do I use the client?
-##Operation in nutshell
+####Operation in nutshell
 
 tutorial in wiki
 ###How do I use the client?
-##Operation in nutshell
+####Operation in nutshell
 
 ###com.github.pozo.volan.utils
 Segéd osztályok
