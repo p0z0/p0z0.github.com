@@ -3,22 +3,26 @@
 ###Requirements
 PHP 5.2.6+
 
-###Used predefined classes/interfaces
- - `Countable` - `lib/utils/ObjectList` 
- - `Iterator` - `lib/utils/ObjectList`
- - `Exception` - `lib/server/JsonRpcExceptions`
+###Used predefined classes and interfaces
+ - `Countable` @ `lib/utils/ObjectList` 
+ - `Iterator` @ `lib/utils/ObjectList`
+ - `Exception` @ `lib/server/JsonRpcExceptions`
 
 ##How do I use the client?
-After you instantiate the `JsonRpcClient` with server url, there have two option to send a request. 
+After you instantiate the `JsonRpcClient` with server url, there have two option to send a request. Both method using the `RpcRequest` class @ 'lib/client/' which help us send a well formed request.
 ###Single request
-To trigger a single request you have two way:
-Use PHP `__call()` magic method,
+####Request
+So, triggering a single request you can:
+Using the PHP `__call()` magic method,
 
     $client = new JsonRpcClient('http://serverurl';
-    // you interested in returning value, so it can not be a notification
-    $client->add(1,2);
+    // notification not allowed
+    $response = $client->add(1,2);
+    
+    if($response->)
+echo $response->result;
 
-or using `JsonRpcClient` `call()` method.
+Using `JsonRpcClient` `call()` method.
 
     $client = new JsonRpcClient('http://serverurl';
     // you interested in returning value
@@ -32,7 +36,8 @@ or using `JsonRpcClient` `call()` method.
     $request->setParams(array(1,2.8));
     $client->call($request);
 
-Both method returning an object if the request is not a notification. The object contain `id`,`jsonrpc` and `result` field if the process was successful, otherwise`error` insted of `result`. The `error` object has three members, `message`,`code` and `data` is optional.
+####Response
+If the request is not a notification it will return an object which contain `id`,`jsonrpc` and `result` field if the process was successful, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional.
 
 ###Batch request
 
