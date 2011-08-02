@@ -1,16 +1,36 @@
+##Introduction
 ﻿JSON-RPC 2.0 Client/Server library for PHP
 
-##Requirements
+###Requirements
 PHP 5.2.6+
 
-##Used predefined classes/interfaces
+###Used predefined classes/interfaces
+
+ - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
+ - `DbConnector` - Adatbázis kapcsolat
+ - `LineHandler` - XXML
+ - `Logger` - "kisalfoldvolan" taggel logol a LongCat-be
+ - `SharedDialogs` - `Activity` k által használt azonos `Dialog` elemek
+ - `SpecifiedLineHandler` - XML
 
 ##How do I use the client?
 ###Operation in nutshell
+ - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
+ - `DbConnector` - Adatbázis kapcsolat
+ - `LineHandler` - XXML
+ - `Logger` - "kisalfoldvolan" taggel logol a LongCat-be
+ - `SharedDialogs` - `Activity` k által használt azonos `Dialog` elemek
+ - `SpecifiedLineHandler` - XML
 
 tutorial in wiki
-##How do I use the client?
+##How do I use the server?
 ###Operation in nutshell
+ - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
+ - `DbConnector` - Adatbázis kapcsolat
+ - `LineHandler` - XXML
+ - `Logger` - "kisalfoldvolan" taggel logol a LongCat-be
+ - `SharedDialogs` - `Activity` k által használt azonos `Dialog` elemek
+ - `SpecifiedLineHandler` - XML
 
 ##com.github.pozo.volan.utils
 Segéd osztályok
