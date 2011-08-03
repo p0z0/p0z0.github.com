@@ -1,6 +1,6 @@
 [﻿JSON-RPC 2.0](http://groups.google.com/group/json-rpc/web/json-rpc-2-0) Client/Server library for PHP
-##Introduction
-###Requirements
+#Introduction
+##equirements
 PHP 5.2.6+
 
 ###Used predefined classes and interfaces
@@ -10,14 +10,14 @@ PHP 5.2.6+
  - [Countable](http://www.php.net/manual/en/class.countable.php) @ `lib/utils/ObjectList` 
  - [Iterator](http://www.php.net/manual/en/class.iterator.php) @ `lib/utils/ObjectList`
 
-##How do I use the client?
+#How do I use the client?
 After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ `lib/client/` which help us to sending a well formatted request.
-###Single request
-####Sending a request
+##Single request
+###Sending a request
 So, triggering a single request after `$client = new JsonRpcClient('http://serverurl');` you can use one of the following methods:
 
 
-- __call() magic method(recommended)
+####__call() magic method(recommended)
 Parameters sequence must represent the same as server implementation and notification not allowed
 
     $response = $client->add($a,$b);
@@ -26,7 +26,7 @@ Is equal with
 
     $response = $client->{'add'}($a,$b);
 
-- RpcRequest
+####RpcRequest
 1)Sorted parameters
 RIGHT
 
@@ -49,7 +49,7 @@ Sequence is not necessary, the server will sorting params if these exits
     $response = $client->call(new RpcRequest('update',null,true));
 
 
-####Working with the response
+###Working with the response
 If the request is not a notification, and the process was successful, the `$response` will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So the first example `var_dump($response)` will look like this if `$a` 10 `$b` 20 :
 
     object(stdClass)#19 (3) {
@@ -77,8 +77,8 @@ And if we call accidentally `addd` instead of `add` :
       int(1)
     }
 
-###Batch request
-####Sending a request
+##Batch request
+###Sending a request
 You can send more than one request at the same time. In this case you must use `ObjectList` util to collect RpcRequest objects and passing into `callBatch` method
 
 1) No one
@@ -114,7 +114,7 @@ You can send more than one request at the same time. In this case you must use `
 
     $responseArray = $client->callBatch($listOfCalls);
 
-####Accepting the response
+###Accepting the response
 Only difference between the Single request that the callBatch will return an array of response objects so `$responseArray` look like this in case of 1)
 
     array(3) {
@@ -172,4 +172,4 @@ case of 2)
 
 and finally case of 3) the `$responseArray` will contain nothing so `NULL`
 
-##How do I use the server?
+#How do I use the server?
