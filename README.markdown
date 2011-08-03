@@ -12,7 +12,7 @@ PHP 5.2.6+
 
 ##How do I use the client?
 After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ `lib/client/` which help us to sending a well formatted request.
-###Single request
+### 
 ####Sending a request
 So, triggering a single request you can:
 
@@ -77,8 +77,98 @@ And if we call accidentally `addd` instead of `add` :
 
 ###Batch request
 ####Sending a request
+You can send more than one request at the same time. In this case you must use `ObjectList` util to collect RpcRequest objects and passing into `callBatch` method
+
+#1 No one
+
+    $client = new JsonRpcClient("http://localhost/jsonrpc/sample/server/");
+    $listOfCalls = new ObjectList();
+
+    $listOfCalls->add(new RpcRequest("add",array(33,77)));
+    $listOfCalls->add(new RpcRequest("add",array(44,11)));
+    $listOfCalls->add(new RpcRequest("add",array(2,12.3)));
+
+    $responseArray = $client->callBatch($listOfCalls);
+
+#2 One of them is a notification
+
+    $client = new JsonRpcClient("http://localhost/jsonrpc/sample/server/");
+    $listOfCalls = new ObjectList();
+
+    $listOfCalls->add(new RpcRequest("add",array(33,77)));
+    $listOfCalls->add(new RpcRequest("add",array(44,11),true));
+    $listOfCalls->add(new RpcRequest("add",array(2,12.3)));
+
+    $responseArray = $client->callBatch($listOfCalls);
+
+#1 All request is notification
+
+    $client = new JsonRpcClient("http://localhost/jsonrpc/sample/server/");
+    $listOfCalls = new ObjectList();
+
+    $listOfCalls->add(new RpcRequest("add",array(33,77),true));
+    $listOfCalls->add(new RpcRequest("add",array(44,11),true));
+    $listOfCalls->add(new RpcRequest("add",array(2,12.3),true));
+
+    $responseArray = $client->callBatch($listOfCalls);
 
 ####Accepting the response
+Only difference between the Single request that the callBatch will return an array of response objects so `$responseArray` look like this in case of #1
+
+    array(3) {
+      [0]=>
+      object(stdClass)#8 (3) {
+        ["jsonrpc"]=>
+        string(3) "2.0"
+        ["result"]=>
+        int(110)
+        ["id"]=>
+        int(2)
+      }
+      [1]=>
+      object(stdClass)#12 (3) {
+        ["jsonrpc"]=>
+        string(3) "2.0"
+        ["result"]=>
+        int(55)
+        ["id"]=>
+        int(3)
+      }
+      [2]=>
+      object(stdClass)#13 (3) {
+        ["jsonrpc"]=>
+        string(3) "2.0"
+        ["result"]=>
+        float(14.3)
+        ["id"]=>
+        int(4)
+      }
+    }
+
+case of #2
+
+    array(2) {
+      [0]=>
+      object(stdClass)#8 (3) {
+        ["jsonrpc"]=>
+        string(3) "2.0"
+        ["result"]=>
+        int(110)
+        ["id"]=>
+        int(2)
+      }
+      [1]=>
+      object(stdClass)#12 (3) {
+        ["jsonrpc"]=>
+        string(3) "2.0"
+        ["result"]=>
+        float(14.3)
+        ["id"]=>
+        int(3)
+      }
+    }
+
+and finally case of #3 the `$responseArray` will contain nothing so `NULL`
 
 ###Operation in nutshell
  - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
