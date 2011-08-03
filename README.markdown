@@ -10,7 +10,7 @@ PHP 5.2.6+
  - [Iterator](http://www.php.net/manual/en/class.iterator.php) @ `lib/utils/ObjectList`
 
 #How do I use the client?
-After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ `lib/client/` which help us to sending a well formatted request.
+After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ `lib/client/` which help us to sending a well formatted request. Step by step tuturial soon.
 ##Single request
 ###Sending a request
 So, triggering a single request after `$client = new JsonRpcClient('http://serverurl');` you can use one of the following methods:
@@ -175,7 +175,7 @@ case of 2)
 and finally case of 3) the `$responseArray` will contain nothing so `NULL`
 
 #How do I use the server?
-You can reach the full sample application source @ `sample` directory
+You can reach the full sample application source @ `sample` directory. Step by step tuturial soon.
 ##Defining service
 First of all you need define an abstract class which inherited from `Service`. **This is necessary for all service**, because the `JsonRpcServer` will work with `Service` class methods to detect callable methods and their parameters with [PHP reflection](http://php.net/manual/en/book.reflection.php) 
     So the client only can reach that method which defined previusly **abstract and public**.For example, if you will have some public method in `MathService` implementation @ `MathServiceImpl`, which is not defined in `MathService` as abstract and public, the client can not reach it.
