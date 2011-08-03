@@ -173,3 +173,40 @@ case of 2)
 and finally case of 3) the `$responseArray` will contain nothing so `NULL`
 
 #How do I use the server?
+You can reach the full sample application source @ `sample` directory
+##Defining service
+First of all you need define an abstract class which inherited from `Service`. **This is necessary for all service**, because the `JsonRpcServer` will work with `Service` class methods to detect callable methods and their parameters with [PHP reflection](http://php.net/manual/en/book.reflection.php) 
+    So the client only can reach that method which defined previusly **abstract and public**.For example, if you will have some public method in `MathService` implementation @ `MathServiceImpl`, which is not defined in `MathService` as abstract and public, the client can not reach it.
+
+Then here is **MathService.php**
+
+    abstract class MathService extends Service {
+        public abstract function divide($aValue,$bValue);
+        public abstract function add($aValue,$bValue);
+        public abstract function subtract($aValue,$bValue);
+
+        public static function getCallableMethodNames();
+            return parent::getCallableMethodNames(__CLASS__);
+        }
+    }
+
+##Implementing service
+If we have a defined service which inherited from `Service`, we can implement it, first of all you must implementing all methods which is abstract as rule, and this guarantee to the `JsonRpcServer` that the method is callable.
+
+**MathServiceImpl.php**
+
+    class MathServiceImpl extends MathService {
+        public function divide($aValue,$bValue) {
+            return $aValue/$bValue;
+        }
+        public function add($aValue,$bValue) {
+            return $aValue/$bValue;
+        }
+        public function subtract($aValue,$bValue) {
+            return $aValue/$bValue;
+        }
+
+        public function notCallableByRpcAlthoughItsPublic($name) {
+            return $name;
+        }
+    }
