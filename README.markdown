@@ -11,31 +11,40 @@ PHP 5.2.6+
  - [Iterator](http://www.php.net/manual/en/class.iterator.php) @ `lib/utils/ObjectList`
 
 ##How do I use the client?
-After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ 'lib/client/' which help us to sending a well formatted request.
+After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ `lib/client/` which help us to sending a well formatted request.
 ###Single request
 ####Sending a request
 So, triggering a single request you can:
-Using the PHP `__call()` magic method,
 
     $client = new JsonRpcClient('http://serverurl');
-    // notification not allowed here
-    $response = $client->add(1,2);
+    // parameters sequence must represent the same as server implementation and notification not allowed
+    // recommended
+    $response = $client->add($a,$b);
+    // is equal with
+    $response = $client->{'add'}($a,$b);
 
-Using `JsonRpcClient` `call()` method:
+    // call with RpcRequest RIGHT 
+    $response = $client->call(new RpcRequest('sanitize',array(array(1,2,3))));
 
-    $client = new JsonRpcClient('http://serverurl');
-    $response = $client->call(new RpcRequest('add',array(1,9.8)));
+    // call with RpcRequest WRONG
+    $response = $client->call(new RpcRequest('sanitize',array(1,2,3)));
 
-    // a notification, server will response nothing
-    $response = $client->call(new RpcRequest('update',array('one',10),true));
-    
-    //every member has setter except id
-    $request = new RpcRequest('add');
-    $request->setParams(array(1,2.8));
-    $response = $client->call($request);
+    // sequence is not necessary, the server will sorting params if these exits
+    $response = $client->call(new RpcRequest('add',array('bValue'=>$b,'aValue'=>$a)));
 
-####Accepting the response
-If the request is not a notification, and the process was successful, the response will return an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional.
+####Working with the response
+If the request is not a notification, and the process was successful, the response will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So the first example `$request` will look like this if `$a` 10 `$b` 20 :
+
+    object(stdClass)#19 (3) {
+      ["jsonrpc"]=>
+      string(3) "2.0"
+      ["result"]=>
+      int(30)
+      ["id"]=>
+      int(1)
+    }
+
+
 
 ###Batch request
 ####Sending a request
