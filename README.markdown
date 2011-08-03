@@ -1,6 +1,6 @@
 [﻿JSON-RPC 2.0](http://groups.google.com/group/json-rpc/web/json-rpc-2-0) Client/Server library for PHP
 #Introduction
-##equirements
+###Requirements
 PHP 5.2.6+
 
 ###Used predefined classes and interfaces
