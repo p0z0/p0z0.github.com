@@ -17,24 +17,24 @@ After you instantiate the `JsonRpcClient` with the server URL, there have two op
 So, triggering a single request you can:
 
     $client = new JsonRpcClient('http://serverurl');
-    // parameters sequence must represent the same as server implementation and notification not allowed
+Parameters sequence must represent the same as server implementation and notification not allowed
     // recommended
     $response = $client->add($a,$b);
-    // is equal with
+is equal with
     $response = $client->{'add'}($a,$b);
 
-    // call with RpcRequest RIGHT 
+call with RpcRequest RIGHT 
     $response = $client->call(new RpcRequest('sanitize',array(array(1,2,3))));
     $response = $client->call(new RpcRequest('deleteById',array(3)));
 
-    // call with RpcRequest WRONG
+call with RpcRequest WRONG
     $response = $client->call(new RpcRequest('sanitize',array(1,2,3)));
     $response = $client->call(new RpcRequest('deleteById',3));
 
-    // sequence is not necessary, the server will sorting params if these exits
+sequence is not necessary, the server will sorting params if these exits
     $response = $client->call(new RpcRequest('add',array('bValue'=>$b,'aValue'=>$a)));
 
-    // notification
+notification
     $response = $client->call(new RpcRequest('deleteAndUpdtae',array(2),true));
     $response = $client->call(new RpcRequest('update',null,true));
 
