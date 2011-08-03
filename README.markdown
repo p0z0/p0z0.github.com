@@ -182,7 +182,7 @@ First of all, your service implementation must inherited from `Service` **This i
 
     /* @JsonRpcMethod*/
 
-The first space after `/*` is very important, because the reflection can not parse the comment winthout it. But, this is correct yet, because Service using `strstr` detecting the `@JsonRpcMethod` annotation.
+The first space after `/*` is very important, because the reflection can not parse the comment winthout it. But, the below sample correct yet, because `Service` using [`strstr`](http://jp.php.net/manual/en/function.strstr.php) detecting the `@JsonRpcMethod` annotation.
 
     /**
     * @JsonRpcMethod which is ...
