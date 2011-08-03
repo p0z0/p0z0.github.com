@@ -52,7 +52,7 @@ Sequence is not necessary, the server will sorting params if these exits **case 
 ###Working with the response
 _Please note that the client side deliberately less implemented, so you can freely manage the response, for example, wrapping the reponse object in `JsonRpcClient` and when you got an unexpected answer, throw an exception etc._
 
-If the request is not a notification, and the process was successful, the `$response` will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So the first example `var_dump($response)` will look like this if `$a` 10 `$b` 20 :
+If the request is not a notification, and the process was successful, the `$response` will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So in `$response = $client->add($a,$b);` case `var_dump($response)` will look like this if `$a` 10 `$b` 20 :
 
     object(stdClass)#19 (3) {
       ["jsonrpc"]=>
