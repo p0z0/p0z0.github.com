@@ -33,7 +33,7 @@ So, triggering a single request you can:
     $response = $client->call(new RpcRequest('add',array('bValue'=>$b,'aValue'=>$a)));
 
 ####Working with the response
-If the request is not a notification, and the process was successful, the response will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So the first example `$request` will look like this if `$a` 10 `$b` 20 :
+If the request is not a notification, and the process was successful, the `$response` will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So the first example `$response` will look like this if `$a` 10 `$b` 20 :
 
     object(stdClass)#19 (3) {
       ["jsonrpc"]=>
@@ -44,7 +44,21 @@ If the request is not a notification, and the process was successful, the respon
       int(1)
     }
 
+And accidentally we call `addd` instead of `add` then :
 
+    object(stdClass)#19 (3) {
+      ["jsonrpc"]=>
+      string(3) "2.0"
+      ["error"]=>
+      object(stdClass)#20 (2) {
+        ["code"]=>
+        int(-32601)
+        ["message"]=>
+        string(16) "Method not found"
+      }
+      ["id"]=>
+      int(1)
+    }
 
 ###Batch request
 ####Sending a request
