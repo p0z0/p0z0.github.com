@@ -175,40 +175,37 @@ case of 2)
 and finally case of 3) the `$responseArray` will contain nothing so `NULL`
 
 #How do I use the server?
-You can reach the full sample application source @ `sample` directory. Step by step tuturial soon.
-##Defining service
-First of all you need define an abstract class which inherited from `Service`. **This is necessary for all service**, because the `JsonRpcServer` will work with `Service` class methods to detect callable methods and their parameters with [PHP reflection](http://php.net/manual/en/book.reflection.php) 
-    So the client only can reach that method which defined previusly **abstract and public**.For example, if you will have some public method in `MathService` implementation @ `MathServiceImpl`, which is not defined in `MathService` as abstract and public, the client can not reach it.
-
-Then here is **MathService.php**
-
-    abstract class MathService extends Service {
-        public abstract function divide($aValue,$bValue);
-        public abstract function add($aValue,$bValue);
-        public abstract function subtract($aValue,$bValue);
-
-        public static function getCallableMethodNames();
-            return parent::getCallableMethodNames(__CLASS__);
-        }
-    }
-
+You can reach the full sample application source @ `sample` directory. _Step by step tuturial soon._
 ##Implementing service
-If we have a defined service which inherited from `Service`, we can implement it, first of all you must implementing all methods which is abstract as rule, and this guarantee to the `JsonRpcServer` that the method is callable.
+First of all, your service implementation must inherited from `Service` **This is necessary for all service**, because the `JsonRpcServer` will work with `Service` methods to detect callable methods and their parameters with [PHP reflection](http://php.net/manual/en/book.reflection.php) 
+    The client only can reach that method which has a block comment exactly with this content :
+
+    /* @JsonRpcMethod*/
+
+The first space after `/*` is very important, because the reflection can not parse the comment winthout it. But, this is correct yet, because Service using `strstr` detecting the `@JsonRpcMethod` annotation.
+
+    /**
+    * @JsonRpcMethod which is ...
+    */
+
+For example, if you have some public method in `MathServiceImpl`, which not have any block comment with `@JsonRpcMethod` annotation, the client can not reach it.
 
 **MathServiceImpl.php**
 
-    class MathServiceImpl extends MathService {
-        public function divide($aValue,$bValue) {
-            return $aValue/$bValue;
-        }
-        public function add($aValue,$bValue) {
-            return $aValue/$bValue;
-        }
-        public function subtract($aValue,$bValue) {
-            return $aValue/$bValue;
-        }
-
-        public function notCallableByRpcAlthoughItsPublic($name) {
-            return $name;
+    class MathServiceImpl extends JsonRpcService {
+	/** @JsonRpcMethod*/
+	public function add($aValue,$bValue) {
+		return $aValue+$bValue;
+	}
+	/** @JsonRpcMethod*/
+	public function divide($aValue,$bValue) {
+		return $aValue/$bValue;
+	}
+	/** @JsonRpcMethod*/
+	public function subtract($aValue,$bValue) {
+		return $aValue-$bValue;
+	}
+	public function notCallableByRpcAlthoughItsPublic($name) {
+		return $name;
         }
     }
