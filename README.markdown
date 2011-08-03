@@ -1,5 +1,4 @@
 [﻿JSON-RPC 2.0](http://groups.google.com/group/json-rpc/web/json-rpc-2-0) Client/Server library for PHP
-#Introduction
 ###Requirements
 PHP 5.2.6+
 
@@ -28,6 +27,7 @@ Is equal with
 
 ####RpcRequest
 1)Sorted parameters
+
 RIGHT
 
     $response = $client->call(new RpcRequest('sanitize',array(array(1,2,3))));
