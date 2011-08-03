@@ -25,15 +25,22 @@ So, triggering a single request you can:
 
     // call with RpcRequest RIGHT 
     $response = $client->call(new RpcRequest('sanitize',array(array(1,2,3))));
+    $response = $client->call(new RpcRequest('deleteById',array(3)));
 
     // call with RpcRequest WRONG
     $response = $client->call(new RpcRequest('sanitize',array(1,2,3)));
+    $response = $client->call(new RpcRequest('deleteById',3));
 
     // sequence is not necessary, the server will sorting params if these exits
     $response = $client->call(new RpcRequest('add',array('bValue'=>$b,'aValue'=>$a)));
 
+    // notification
+    $response = $client->call(new RpcRequest('deleteAndUpdtae',array(2),true));
+    $response = $client->call(new RpcRequest('update',null,true));
+
+
 ####Working with the response
-If the request is not a notification, and the process was successful, the `$response` will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So the first example `$response` will look like this if `$a` 10 `$b` 20 :
+If the request is not a notification, and the process was successful, the `$response` will be an object which contain `id`,`jsonrpc` and `result` fields, otherwise the result object will contain `error` instead of `result`. The `error` object has three members, `message`,`code` and `data` which is optional. So the first example `var_dump($response)` will look like this if `$a` 10 `$b` 20 :
 
     object(stdClass)#19 (3) {
       ["jsonrpc"]=>
@@ -44,7 +51,7 @@ If the request is not a notification, and the process was successful, the `$resp
       int(1)
     }
 
-And accidentally we call `addd` instead of `add` then :
+And if we call accidentally `addd` instead of `add` :
 
     object(stdClass)#19 (3) {
       ["jsonrpc"]=>
