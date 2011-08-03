@@ -170,21 +170,4 @@ case of 2)
 
 and finally case of 3) the `$responseArray` will contain nothing so `NULL`
 
-###Operation in nutshell
- - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
- - `DbConnector` - Adatbázis kapcsolat
- - `LineHandler` - XXML
- - `Logger` - "kisalfoldvolan" taggel logol a LongCat-be
- - `SharedDialogs` - `Activity` k által használt azonos `Dialog` elemek
- - `SpecifiedLineHandler` - XML
-
-tutorial in wiki
-
 ##How do I use the server?
-###Operation in nutshell
- - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
- - `DbConnector` - Adatbázis kapcsolat
- - `LineHandler` - XXML
- - `Logger` - "kisalfoldvolan" taggel logol a LongCat-be
- - `SharedDialogs` - `Activity` k által használt azonos `Dialog` elemek
- - `SpecifiedLineHandler` - XML
