@@ -16,30 +16,34 @@ After you instantiate the `JsonRpcClient` with the server URL, there have two op
 ####Sending a request
 So, triggering a single request after `$client = new JsonRpcClient('http://serverurl');` you can use one of the following methods:
 
+
+#####__call() magic method(recommended)
 Parameters sequence must represent the same as server implementation and notification not allowed
 
-    // recommended
     $response = $client->add($a,$b);
 
 Is equal with
 
     $response = $client->{'add'}($a,$b);
 
-Call with RpcRequest RIGHT 
+#####RpcRequest
+######Sorted parameters
+#######RIGHT
 
     $response = $client->call(new RpcRequest('sanitize',array(array(1,2,3))));
     $response = $client->call(new RpcRequest('deleteById',array(3)));
 
-Call with RpcRequest WRONG
+#######WRONG
 
     $response = $client->call(new RpcRequest('sanitize',array(1,2,3)));
     $response = $client->call(new RpcRequest('deleteById',3));
 
+######Named parameters
 Sequence is not necessary, the server will sorting params if these exits
 
     $response = $client->call(new RpcRequest('add',array('bValue'=>$b,'aValue'=>$a)));
 
-Notification
+######Notification
 
     $response = $client->call(new RpcRequest('deleteAndUpdtae',array(2),true));
     $response = $client->call(new RpcRequest('update',null,true));
