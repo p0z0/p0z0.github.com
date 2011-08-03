@@ -79,7 +79,7 @@ And if we call accidentally `addd` instead of `add` :
 ####Sending a request
 You can send more than one request at the same time. In this case you must use `ObjectList` util to collect RpcRequest objects and passing into `callBatch` method
 
-#1 No one
+1) No one
 
     $client = new JsonRpcClient("http://localhost/jsonrpc/sample/server/");
     $listOfCalls = new ObjectList();
@@ -90,7 +90,7 @@ You can send more than one request at the same time. In this case you must use `
 
     $responseArray = $client->callBatch($listOfCalls);
 
-#2 One of them is a notification
+2) One of them is a notification
 
     $client = new JsonRpcClient("http://localhost/jsonrpc/sample/server/");
     $listOfCalls = new ObjectList();
@@ -101,7 +101,7 @@ You can send more than one request at the same time. In this case you must use `
 
     $responseArray = $client->callBatch($listOfCalls);
 
-#1 All request is notification
+3) All request is notification
 
     $client = new JsonRpcClient("http://localhost/jsonrpc/sample/server/");
     $listOfCalls = new ObjectList();
@@ -113,7 +113,7 @@ You can send more than one request at the same time. In this case you must use `
     $responseArray = $client->callBatch($listOfCalls);
 
 ####Accepting the response
-Only difference between the Single request that the callBatch will return an array of response objects so `$responseArray` look like this in case of #1
+Only difference between the Single request that the callBatch will return an array of response objects so `$responseArray` look like this in case of 1)
 
     array(3) {
       [0]=>
@@ -145,7 +145,7 @@ Only difference between the Single request that the callBatch will return an arr
       }
     }
 
-case of #2
+case of 2)
 
     array(2) {
       [0]=>
@@ -168,7 +168,7 @@ case of #2
       }
     }
 
-and finally case of #3 the `$responseArray` will contain nothing so `NULL`
+and finally case of 3) the `$responseArray` will contain nothing so `NULL`
 
 ###Operation in nutshell
  - `Constants` - Adatbázishoz Intentekhez és egyebekhez használt állandók
