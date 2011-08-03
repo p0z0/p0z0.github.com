@@ -12,7 +12,7 @@ PHP 5.2.6+
 
 ##How do I use the client?
 After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ `lib/client/` which help us to sending a well formatted request.
-### 
+###Single request
 ####Sending a request
 So, triggering a single request you can:
 
