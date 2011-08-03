@@ -14,9 +14,7 @@ PHP 5.2.6+
 After you instantiate the `JsonRpcClient` with the server URL, there have two option to send a request. Both method using the `RpcRequest` class @ `lib/client/` which help us to sending a well formatted request.
 ###Single request
 ####Sending a request
-So, triggering a single request you can:
-
-    $client = new JsonRpcClient('http://serverurl');
+So, triggering a single request after `$client = new JsonRpcClient('http://serverurl');` you can use one of the following methods:
 
 Parameters sequence must represent the same as server implementation and notification not allowed
 
